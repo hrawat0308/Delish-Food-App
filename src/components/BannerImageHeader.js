@@ -1,11 +1,12 @@
-import { Container, Image } from "react-bootstrap";
-import imagesrc from '../images/FoodAppBanner.jpg';
+import classes from './Item.module.css';
 
 const BannerImageHeader = function(){
     return(
-        <Container>
-            <Image src={imagesrc} fluid></Image>
-        </Container>
+        <div className={classes.bannerImage}>
+            <div className={classes.bannerSlogan}>
+                <h1>Take a bite out of hunger.</h1>
+            </div>
+        </div>
     );
 };
 

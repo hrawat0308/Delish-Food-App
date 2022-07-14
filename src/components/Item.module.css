@@ -1,0 +1,47 @@
+.itemContainer{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.itemWrapper{
+    /* border: solid 2px black ; */
+    margin-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    /* background-color: #F6F6F6; */
+    background-color: #2C3639;
+    color: #DCD7C9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.itemQuantity{
+    margin-right: 3px;
+    text-align: center;
+    width: 40px;
+    margin-top: 2px;
+}
+
+.bannerImage{
+    background-image: url('../images/FoodAppBanner.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 500px;
+    margin-bottom: 2rem;
+}
+
+.bannerSlogan{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    
+}
+.bannerSlogan h1{
+    font-size: 5rem;
+    padding-top: 17%;
+}
