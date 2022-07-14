@@ -1,7 +1,10 @@
+import { Fragment } from "react";
 import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
+import BannerImageHeader from "./BannerImageHeader";
 
 const NavbarComponent = function(){
     return(
+        <Fragment>
         <Navbar bg="dark" variant="dark" fixed="">
             <Container >
                 <Navbar.Brand><h1>Delish</h1></Navbar.Brand>
@@ -10,6 +13,8 @@ const NavbarComponent = function(){
                 </Nav>
             </Container>
         </Navbar>
+        <BannerImageHeader />
+        </Fragment>
     );
 };
 
