@@ -12,8 +12,10 @@
     padding-bottom: 20px;
     border-radius: 10px;
     /* background-color: #F6F6F6; */
-    background-color: #2C3639;
-    color: #DCD7C9;
+    /* background-color: #2C3639; */
+    background-color: rgba(44, 54, 57, 0.5);
+    /* color: #DCD7C9; */
+    color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -29,7 +31,8 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    height: 500px;
+    /* height: 500px; */
+    height: 100%;
     margin-bottom: 2rem;
 }
 
@@ -43,5 +46,7 @@
 }
 .bannerSlogan h1{
     font-size: 5rem;
-    padding-top: 17%;
+    /* padding-top: 17%; */
+    padding-top: 2%;
+    text-shadow: 10px 20px 30px black;
 }
