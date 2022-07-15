@@ -1,6 +1,6 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import classes from './Item.module.css';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch} from 'react-redux';
 import {addItemToCartActions} from '../store/index';
 
@@ -22,8 +22,11 @@ const Item = function(props){
             quantity : quantity.current.value,
             totalPrice : price.current.value * quantity.current.value,
         }));
-
+        
+        dispatch(addItemToCartActions.addItemToCartButtonClick());
     }
+
+    
 
     return(
         <form className={classes.itemWrapper} key={props.id} onSubmit={addToCartHandler}>

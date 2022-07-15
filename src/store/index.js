@@ -12,7 +12,7 @@ const showCartSlice = createSlice({
 
 const addItemToCartSlice = createSlice({
     name : 'addedItem',
-    initialState: { id: "", name: "", price: "", quantity:"", totalPrice:"", addedItemArray : [] },
+    initialState: { id: "", name: "", price: "", quantity:"", totalPrice:"", addedItemArray : [] , isClicked : false },
     reducers : {
         addItemToCart(state, action){
                     state.id = action.payload.id;
@@ -37,7 +37,11 @@ const addItemToCartSlice = createSlice({
                         
                     }
    
-                }
+                },
+
+            addItemToCartButtonClick(state){
+                state.isClicked = !state.isClicked;
+            }
         }
     });
 

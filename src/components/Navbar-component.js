@@ -6,7 +6,7 @@ import CartButton from "./CartButton";
 const NavbarComponent = function(){
     return(
         <Fragment>
-        <Navbar bg="dark" variant="dark" fixed="">
+        <Navbar bg="dark" variant="dark" sticky="top">
             <Container >
                 <Navbar.Brand><h1>Delish</h1></Navbar.Brand>
                 <CartButton />
