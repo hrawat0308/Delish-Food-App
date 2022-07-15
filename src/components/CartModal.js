@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux';
 import { isCartShowingActions } from '../store/index';
 import { useSelector } from 'react-redux';
 import classes from './Item.module.css'; 
+// import {addItemToCartActions} from '../store/index';
+import CartItem from "./CartItem";
 
 const CartModal = function(props){   
   const dispatch = useDispatch();        
   const onCartClickHandler = () => {
         dispatch(isCartShowingActions.showCart());
   }
-
   const ItemsArray = useSelector(state=>state.addedItem.addedItemArray);  
   return(
         <Modal
@@ -37,8 +38,7 @@ const CartModal = function(props){
                 <Col xs={6}>
                   <Row>
                     <Col xs={7}>
-                      <Button variant="outline-dark" className={classes.buttonInCartModal}>+</Button>
-                      <Button variant="outline-dark" className={classes.buttonInCartModal}>-</Button>
+                      <CartItem id={item.id} />
                     </Col>
                     <Col xs={5}><h4>₹ {item.totalPrice}</h4></Col>
                   </Row>

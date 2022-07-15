@@ -41,6 +41,26 @@ const addItemToCartSlice = createSlice({
 
             addItemToCartButtonClick(state){
                 state.isClicked = !state.isClicked;
+            },
+
+            incrementItem(state, action){
+                const index = state.addedItemArray.findIndex((item) => item.id === action.payload.id);
+                state.addedItemArray[index].quantity++;
+                state.addedItemArray[index].totalPrice = state.addedItemArray[index].price * state.addedItemArray[index].quantity; 
+                 
+            },
+
+            decrementItem(state, action){
+                const index = state.addedItemArray.findIndex((item) => item.id === action.payload.id);
+                state.addedItemArray[index].quantity--;
+                if(state.addedItemArray[index].quantity !== 0){
+                    state.addedItemArray[index].totalPrice = state.addedItemArray[index].price * state.addedItemArray[index].quantity;
+                }
+                else{
+                    state.addedItemArray = state.addedItemArray.filter((item)=>{
+                        return item.id !== action.payload.id;
+                    });
+                }
             }
         }
     });
