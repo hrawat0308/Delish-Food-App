@@ -1,7 +1,8 @@
-import { Modal, Button, ModalBody } from "react-bootstrap";
+import { Modal, Button, ModalBody, Row, Col } from "react-bootstrap";
 import { useDispatch } from 'react-redux';
 import { isCartShowingActions } from '../store/index';
 import { useSelector } from 'react-redux';
+import classes from './Item.module.css'; 
 
 const CartModal = function(props){   
   const dispatch = useDispatch();        
@@ -27,16 +28,47 @@ const CartModal = function(props){
         ItemsArray.map((item)=>{
           return(
             <Modal.Body key={item.id}>
-              <h4>{item.name}</h4>
-              <h6>x{item.quantity}</h6>
-              <h6>{item.totalPrice}</h6>
+              <Row className="justify-content-between">
+                <Col xs={6}>
+                  <h4>{item.name}</h4>
+                  <h6>x{item.quantity}</h6>
+                  <h6>₹{item.price}</h6>  
+                </Col>
+                <Col xs={6}>
+                  <Row>
+                    <Col xs={7}>
+                      <Button variant="outline-dark" className={classes.buttonInCartModal}>+</Button>
+                      <Button variant="outline-dark" className={classes.buttonInCartModal}>-</Button>
+                    </Col>
+                    <Col xs={5}><h4>₹ {item.totalPrice}</h4></Col>
+                  </Row>
+                </Col>
+              </Row>
+              <hr></hr>
             </Modal.Body>
           );
         })
       }
+      {
+        ItemsArray.length !== 0 && <Modal.Body><Row >
+        <Col xs={8}><h3>Total Amount :</h3></Col>
+        <Col xs={4} className={classes.totalAmountInCart}><h3>₹ {
+          ItemsArray.reduce((acc, item)=>{
+            return acc + item.totalPrice;
+          },0)
+        }</h3></Col>
+      </Row>
+      </Modal.Body>
+      }
       
       <Modal.Footer>
-        <Button onClick={onCartClickHandler}>Close</Button>
+        { ItemsArray.length === 0 && <Button onClick={onCartClickHandler}>Close</Button> }
+        { ItemsArray.length !==0 && 
+            <div>
+                <Button onClick={onCartClickHandler} className={classes.closeAndOrderButtonsInCart}>Close</Button>
+                <Button className={classes.closeAndOrderButtonsInCart}>Order Now</Button>
+              </div>  
+        }
       </Modal.Footer>
     </Modal>
     )

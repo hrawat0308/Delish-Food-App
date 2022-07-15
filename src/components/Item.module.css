@@ -22,6 +22,10 @@
     margin-top: 2px;
 }
 
+.menuContainer{
+    padding-bottom: 50px;
+}
+
 .bannerImage{
     background-image: url('../images/FoodAppBanner.jpg');
     background-repeat: no-repeat;
@@ -47,7 +51,7 @@
     text-shadow: 10px 20px 30px black;
 }
 
-.animateCartButton{
+/* .animateCartButton{
     background-color: #1F4690;
     animation: shake 0.5s;
     animation-iteration-count: infinite;
@@ -65,4 +69,40 @@
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
+  } */
+
+  .animateCartButton{
+    animation: bump 300ms ease-out;
   }
+
+  @keyframes bump {
+    0%{
+        transform: scale(1);
+    }
+    10%{
+        transform: scale(0.9);
+    }
+    30%{
+        transform: scale(1.1);
+    }
+    50%{
+        transform: scale(1.15);
+    }
+    100%{
+        transform: scale(1);
+    }
+    
+  }
+
+  .buttonInCartModal {
+    margin-left: 1rem;
+  }
+
+  .closeAndOrderButtonsInCart{
+    margin-left: 1rem;
+  }
+
+.totalAmountInCart{
+    text-align: center;
+}
+  

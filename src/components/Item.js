@@ -1,16 +1,28 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import classes from './Item.module.css';
 import { useEffect, useRef } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import {addItemToCartActions} from '../store/index';
 
 
 const Item = function(props){
     const dispatch = useDispatch();
+    const itemsArray = useSelector(state=>state.addedItem.addedItemArray);
     const quantity = useRef(); 
     const name = useRef();
     const price = useRef();
     const dishId = useRef();
+
+    useEffect(()=>{
+        if(itemsArray.length === 0) return;
+        dispatch(addItemToCartActions.addItemToCartButtonClick());
+        const timer = setTimeout(()=>{
+            dispatch(addItemToCartActions.addItemToCartButtonClick());
+        },300);
+        return ()=>{
+            clearTimeout(timer);
+        };
+    },[itemsArray, dispatch]);
     
 
     const addToCartHandler = (event) => {
@@ -22,8 +34,6 @@ const Item = function(props){
             quantity : quantity.current.value,
             totalPrice : price.current.value * quantity.current.value,
         }));
-        
-        dispatch(addItemToCartActions.addItemToCartButtonClick());
     }
 
     
