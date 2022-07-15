@@ -1,31 +1,50 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import classes from './Item.module.css';
 import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {addItemToCartActions} from '../store/index';
+
 
 const Item = function(props){
-    const quantity = useRef();    
+    const dispatch = useDispatch();
+    const quantity = useRef(); 
+    const name = useRef();
+    const price = useRef();
+    const dishId = useRef();
+    
+
     const addToCartHandler = (event) => {
-        if(quantity.current.value === ""){
-            quantity.current.value = 1;
-        }
-        else{
-            console.log(quantity.current.value);
-        }
+        event.preventDefault();
+        dispatch(addItemToCartActions.addItemToCart({
+            id : dishId.current.value,
+            name : name.current.value,
+            price : price.current.value,
+            quantity : quantity.current.value,
+            totalPrice : price.current.value * quantity.current.value,
+        }));
+
     }
 
     return(
-        <div className={classes.itemWrapper} key={props.id}>
+        <form className={classes.itemWrapper} key={props.id} onSubmit={addToCartHandler}>
             <Row xs={8} className={`${classes.itemContainer} justify-content-between`}>
-                <Col><h3>{props.dishname}</h3></Col>
-                <Col><h3>₹{props.price}</h3></Col>
+                <input ref={dishId} type="text" defaultValue={props.id}  hidden/>
+                <Col>
+                    <label><h3>{props.dishname}</h3></label>
+                    <input ref={name} type="text" defaultValue={props.dishname} hidden />
+                </Col>
+                <Col>
+                    <label><h3>₹{props.price}</h3></label>
+                    <input ref={price} type="number" defaultValue={props.price} hidden />
+                </Col>
             </Row>
             <Row xs={8} className={`${classes.itemContainer} justify-content-between`}>
                 <Col >
-                    <input ref={quantity} type="number" min="1" max="5" placeholder='1' className={classes.itemQuantity}></input>
-                    <Button variant="dark" onClick={addToCartHandler}>Add to Cart</Button>
+                    <input ref={quantity} type="number" min="1" max="5" defaultValue={1} className={classes.itemQuantity}></input>
+                    <Button variant="dark" type="submit">Add to Cart</Button>
                 </Col>
             </Row>
-        </div>
+        </form>
     );
 };
 
