@@ -1,4 +1,5 @@
 import classes from './Item.module.css';
+// import Menu from './Menu';
 
 const BannerImageHeader = function(){
     return(
@@ -6,6 +7,7 @@ const BannerImageHeader = function(){
             <div className={classes.bannerSlogan}>
                 <h1>Take a bite out of hunger.</h1>
             </div>
+            {/* <Menu /> */}
         </div>
     );
 };

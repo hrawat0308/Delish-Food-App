@@ -1,6 +1,7 @@
 import { Fragment } from "react";
-import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
+import { Navbar, Container } from "react-bootstrap";
 import BannerImageHeader from "./BannerImageHeader";
+import CartButton from "./CartButton";
 
 const NavbarComponent = function(){
     return(
@@ -8,9 +9,7 @@ const NavbarComponent = function(){
         <Navbar bg="dark" variant="dark" fixed="">
             <Container >
                 <Navbar.Brand><h1>Delish</h1></Navbar.Brand>
-                <Nav >
-                    <Button size="lg">Cart <Badge pill bg="danger">4</Badge> </Button>
-                </Nav>
+                <CartButton />
             </Container>
         </Navbar>
         <BannerImageHeader />
