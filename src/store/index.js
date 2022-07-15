@@ -20,14 +20,23 @@ const addItemToCartSlice = createSlice({
                     state.price = action.payload.price;
                     state.quantity = action.payload.quantity;
                     state.totalPrice = action.payload.totalPrice;
-
-                    state.addedItemArray = [...state.addedItemArray,{
-                        id : state.id,
-                        name : state.name,
-                        price : state.price,
-                        quantity : state.quantity,
-                        totalPrice : state.totalPrice
-                    }];
+                    
+                    const existingIndex = state.addedItemArray.findIndex((item)=>item.id === state.id);
+                    if(existingIndex !== -1){
+                        state.addedItemArray[existingIndex].quantity = Number(state.addedItemArray[existingIndex].quantity) + Number(state.quantity);
+                        state.addedItemArray[existingIndex].totalPrice += state.totalPrice;
+                    }else{
+                       
+                            state.addedItemArray = [...state.addedItemArray,{
+                            id : state.id,
+                            name : state.name,
+                            price : state.price,
+                            quantity : state.quantity,
+                            totalPrice : state.totalPrice
+                            }];
+                        
+                    }
+   
                 }
         }
     });

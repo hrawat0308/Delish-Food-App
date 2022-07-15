@@ -1,7 +1,7 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import classes from './Item.module.css';
 import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {addItemToCartActions} from '../store/index';
 
 
