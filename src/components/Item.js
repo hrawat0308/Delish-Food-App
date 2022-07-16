@@ -3,7 +3,7 @@ import classes from './Item.module.css';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {addItemToCartActions} from '../store/index';
-
+import { fetchCart } from '../store/index';
 
 const Item = function(props){
     const dispatch = useDispatch();
@@ -12,6 +12,10 @@ const Item = function(props){
     const name = useRef();
     const price = useRef();
     const dishId = useRef();
+
+    useEffect(()=>{
+        dispatch(fetchCart());
+    }, [dispatch]);
 
     useEffect(()=>{
         if(itemsArray.length === 0) return;
@@ -23,6 +27,21 @@ const Item = function(props){
             clearTimeout(timer);
         };
     },[itemsArray, dispatch]);
+
+    useEffect(()=>{
+        const sendCartData = async ()=>{
+            const response = await fetch(`https://delish-food-app-default-rtdb.firebaseio.com/cart.json`, {
+                method: 'PUT',
+                body: JSON.stringify(itemsArray)
+            });
+
+            if(!response.ok){
+                throw new Error("Something went wrong while adding item to cart");
+            }
+        }
+
+        sendCartData();
+    }, [itemsArray]);
     
 
     const addToCartHandler = (event) => {

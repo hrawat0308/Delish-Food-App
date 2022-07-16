@@ -31,9 +31,8 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    /* height: 500px; */
     height: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: -5%;
 }
 
 .bannerSlogan{

@@ -10,6 +10,51 @@ const showCartSlice = createSlice({
     }
 });
 
+const fetchMenuSlice = createSlice({
+    name: 'fetchMenu',
+    initialState: { Menu : []},
+    reducers: {
+        setMenu(state, action){
+            state.Menu = [];
+            for(const key in action.payload.responseData){ 
+                state.Menu.push({
+                    id : key,
+                    name: action.payload.responseData[key].name,
+                    price: action.payload.responseData[key].price
+                });
+            }
+        }
+    }
+});
+
+export const fetchMeals = () => {
+    return async (dispatch) => {
+        const response = await fetch(`https://delish-food-app-default-rtdb.firebaseio.com/meals.json`);
+        if(!response.ok){
+            throw new Error("Failed to Fetch the Meals from Database");
+        }
+        const responseData = await response.json();
+        dispatch(fetchMenuActions.setMenu({responseData}));
+    }
+}
+
+export const fetchCart = () => {
+    return async (dispatch) => {
+        const response = await fetch(`https://delish-food-app-default-rtdb.firebaseio.com/cart.json`);
+            if(!response.ok){
+                throw new Error("There is Not item in Cart");
+            }
+            const responseData = await response.json();
+            if(responseData !== null){
+                    const testCart = [];
+                    responseData.forEach((item)=>{
+                    testCart.push(item);
+                });
+                dispatch(addItemToCartActions.fetchCartData({testCart}));
+            }
+    }
+}
+
 const addItemToCartSlice = createSlice({
     name : 'addedItem',
     initialState: { id: "", name: "", price: "", quantity:"", totalPrice:"", addedItemArray : [] , isClicked : false },
@@ -61,6 +106,10 @@ const addItemToCartSlice = createSlice({
                         return item.id !== action.payload.id;
                     });
                 }
+            },
+
+            fetchCartData(state, action){
+                state.addedItemArray = action.payload.testCart;
             }
         }
     });
@@ -69,9 +118,12 @@ const store = configureStore({
     reducer: {
         isCartShowing : showCartSlice.reducer,
         addedItem : addItemToCartSlice.reducer,
+        fetchMenu: fetchMenuSlice.reducer,
     }
 });
 
 export const isCartShowingActions = showCartSlice.actions;
 export const addItemToCartActions = addItemToCartSlice.actions;
+export const fetchMenuActions = fetchMenuSlice.actions;
+
 export default store;
