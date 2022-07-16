@@ -1,0 +1,107 @@
+.itemContainer{
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.itemWrapper{
+    margin-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgba(44, 54, 57, 0.5);
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.itemQuantity{
+    margin-right: 3px;
+    text-align: center;
+    width: 40px;
+    margin-top: 2px;
+}
+
+.menuContainer{
+    padding-bottom: 50px;
+}
+
+.bannerImage{
+    background-image: url('../images/FoodAppBanner.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    margin-bottom: -5%;
+}
+
+.bannerSlogan{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    
+}
+.bannerSlogan h1{
+    font-size: 5rem;
+    /* padding-top: 17%; */
+    padding-top: 2%;
+    text-shadow: 10px 20px 30px black;
+}
+
+/* .animateCartButton{
+    background-color: #1F4690;
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  } */
+
+  .animateCartButton{
+    animation: bump 300ms ease-out;
+  }
+
+  @keyframes bump {
+    0%{
+        transform: scale(1);
+    }
+    10%{
+        transform: scale(0.9);
+    }
+    30%{
+        transform: scale(1.1);
+    }
+    50%{
+        transform: scale(1.15);
+    }
+    100%{
+        transform: scale(1);
+    }
+    
+  }
+
+  .buttonInCartModal {
+    margin-left: 1rem;
+  }
+
+  .closeAndOrderButtonsInCart{
+    margin-left: 1rem;
+  }
+
+.totalAmountInCart{
+    text-align: center;
+}
+  
